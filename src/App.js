@@ -8,6 +8,7 @@ import Dashboard from './components/Dashboard';
 import TaskScheduler from './components/TaskScheduler';
 import LandingPage from './components/LandingPage';
 import Events from './components/Events';
+import Chatbot from './components/Chatbot';
 
 function App() {
   const theme = createTheme({
@@ -126,6 +127,7 @@ function App() {
             <Route path="/tasks" element={<TaskScheduler />} />
             <Route path="/events" element={<Events />} />
           </Routes>
+          <Chatbot />  // Ensure this line is present
         </div>
       </Router>
     </ThemeProvider>

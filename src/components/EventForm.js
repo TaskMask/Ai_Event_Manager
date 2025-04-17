@@ -8,6 +8,7 @@ import {
   Grid,
   MenuItem
 } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
 
 function EventForm() {
   const [eventData, setEventData] = useState({
@@ -38,6 +39,16 @@ function EventForm() {
       ...eventData,
       [e.target.name]: e.target.value
     });
+  };
+
+  const navigate = useNavigate();
+
+  const handleCreateEvent = () => {
+    // Logic to create a new event
+    // ...
+
+    // Navigate to the Events tab after creating the event
+    navigate('/events');
   };
 
   return (
@@ -121,6 +132,16 @@ function EventForm() {
                 size="large"
               >
                 Get AI Recommendations
+              </Button>
+            </Grid>
+            <Grid item xs={12}>
+              <Button 
+                variant="contained" 
+                color="secondary" 
+                size="large"
+                onClick={handleCreateEvent} // Add onClick handler
+              >
+                Start Planning
               </Button>
             </Grid>
           </Grid>

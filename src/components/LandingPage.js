@@ -1,137 +1,83 @@
 import React from 'react';
-import { 
-  Container, 
-  Grid, 
-  Typography, 
-  Button, 
-  Box,
-  Card,
-  CardContent,
-} from '@mui/material';
+import { Button, Container, Typography, Box } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
-import SearchIcon from '@mui/icons-material/Search';
-import AccessTimeIcon from '@mui/icons-material/AccessTime';
-import AutoGraphIcon from '@mui/icons-material/AutoGraph';
-import GroupsIcon from '@mui/icons-material/Groups';
+
+// Placeholder image URLs for various events
+const eventImages = [
+  'https://via.placeholder.com/150?text=Birthday+Party',
+  'https://via.placeholder.com/150?text=Marriage',
+  'https://via.placeholder.com/150?text=Anniversary',
+  'https://via.placeholder.com/150?text=Business',
+];
+
+// Text content for floating text boxes
+const floatingTexts = [
+  'Plan your perfect event with AI recommendations.',
+  'Create memorable experiences effortlessly.',
+  'Get personalized event planning tips.',
+  'Discover new ideas for your events.',
+  'Connect with top event planners.'
+];
 
 function LandingPage() {
   const navigate = useNavigate();
 
-  const features = [
-    {
-      icon: <SearchIcon sx={{ fontSize: 40 }} />,
-      title: 'Smart Venue Finder',
-      description: 'AI-powered venue recommendations based on your preferences and budget'
-    },
-    {
-      icon: <AccessTimeIcon sx={{ fontSize: 40 }} />,
-      title: 'Task Scheduler',
-      description: 'Automated timeline and task management for seamless event planning'
-    },
-    {
-      icon: <AutoGraphIcon sx={{ fontSize: 40 }} />,
-      title: 'Learns Your Style',
-      description: 'Personalized suggestions that improve with every event you plan'
-    },
-    {
-      icon: <GroupsIcon sx={{ fontSize: 40 }} />,
-      title: 'Guest List Wizard',
-      description: 'Smart guest list management with RSVP tracking and dietary preferences'
-    }
-  ];
+  const handleStartPlanning = () => {
+    navigate('/events'); // Navigate to the Events tab
+  };
 
   return (
-    <Box sx={{ overflow: 'hidden' }}>
-      <Container maxWidth="lg" sx={{ mt: 8, mb: 14 }}>
-        <Grid container spacing={6} alignItems="center">
-          <Grid item xs={12} md={6}>
-            <Typography variant="h1" gutterBottom>
-              Plan Events Without the Stress
-            </Typography>
-            <Typography variant="h5" color="text.secondary" sx={{ mb: 4 }}>
-              Meet your AI assistant for event planning: smart, fast, and personalized.
-            </Typography>
-            <Button 
-              variant="contained" 
-              size="large"
-              onClick={() => navigate('/new-event')}
-              sx={{ 
-                py: 2,
-                px: 4,
-                fontSize: '1.1rem'
-              }}
-            >
-              Start Planning
-            </Button>
-          </Grid>
-          <Grid item xs={12} md={6}>
-            <Box
-              sx={{
-                width: '100%',
-                height: '400px',
-                maxWidth: 600,
-                background: 'linear-gradient(135deg, #6366F1 0%, #EC4899 100%)',
-                borderRadius: '24px',
-                opacity: 0.8,
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                color: 'white',
-                fontSize: '1.5rem',
-                boxShadow: '0 20px 40px rgba(0,0,0,0.1)',
-                transition: 'transform 0.3s ease',
-                '&:hover': {
-                  transform: 'translateY(-10px)',
-                },
-              }}
-            >
-              Image Placeholder
-            </Box>
-          </Grid>
-        </Grid>
-      </Container>
-
-      {/* Features Section */}
-      <Container maxWidth="lg" sx={{ mb: 14 }}>
-        <Typography variant="h2" textAlign="center" gutterBottom>
-          Features
-        </Typography>
-        <Grid container spacing={4} sx={{ mt: 4 }}>
-          {features.map((feature, index) => (
-            <Grid item xs={12} sm={6} md={3} key={index}>
-              <Card 
-                sx={{ 
-                  height: '100%',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  alignItems: 'center',
-                  textAlign: 'center',
-                  p: 2
-                }}
-              >
-                <Box sx={{ 
-                  mb: 2,
-                  color: 'primary.main',
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'center'
-                }}>
-                  {feature.icon}
-                </Box>
-                <CardContent>
-                  <Typography variant="h6" gutterBottom>
-                    {feature.title}
-                  </Typography>
-                  <Typography variant="body2" color="text.secondary">
-                    {feature.description}
-                  </Typography>
-                </CardContent>
-              </Card>
-            </Grid>
-          ))}
-        </Grid>
-      </Container>
-    </Box>
+    <Container maxWidth="md" sx={{ mt: 4 }}>
+      <Typography variant="h3" gutterBottom>
+        Welcome to AI Event Planner
+      </Typography>
+      <Typography variant="body1" gutterBottom>
+        Plan your events with ease using AI recommendations.
+      </Typography>
+      <Box sx={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: 2, mt: 4 }}>
+        {eventImages.map((src, index) => (
+          <img 
+            key={index} 
+            src={src} 
+            alt={`Event ${index}`} 
+            style={{ 
+              width: '150px', 
+              height: '150px', 
+              borderRadius: '10px', 
+              boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
+            }} 
+          />
+        ))}
+      </Box>
+      <Box sx={{ display: 'flex', justifyContent: 'center', flexWrap: 'wrap', gap: 2, mt: 4 }}>
+        {floatingTexts.map((text, index) => (
+          <Box 
+            key={index} 
+            sx={{ 
+              backgroundColor: 'rgba(15, 23, 42, 0.9)', // Match with background color
+              padding: '10px', // Reduced padding for compact size
+              borderRadius: '10px', // Reduced border radius for compact corners
+              boxShadow: '0 4px 8px rgba(0, 0, 0, 0.3)', // Adjusted shadow for compact depth
+              color: 'white', // Ensure text is visible
+              border: '1px solid rgba(255, 255, 255, 0.2)', // Added border for definition
+              textAlign: 'center', // Centered text
+              fontSize: '0.9rem', // Reduced font size for compact readability
+            }}
+          >
+            {text}
+          </Box>
+        ))}
+      </Box>
+      <Button 
+        variant="contained" 
+        color="primary" 
+        size="large"
+        onClick={handleStartPlanning} // Add onClick handler
+        sx={{ mt: 4 }}
+      >
+        Start Planning
+      </Button>
+    </Container>
   );
 }
 
